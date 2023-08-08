@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
-import './App.css';
-import { Link } from "react-router-dom"
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import HomePage from "./Pages/HomePage/HomePage";
 
 function App() {
-  
-  return (
-    <div className="App">
-      <h1>Hello Spotify </h1>
-      <Link to="/callback">Login to Spotify</Link>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/home" element={<HomePage />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
