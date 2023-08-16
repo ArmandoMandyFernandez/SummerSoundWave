@@ -2,11 +2,10 @@ import './LoginPage.scss';
 
 
 function LoginPage(){
-
     
     return(
         <section>
-            Hello from Login 
+            <a href="http://localhost:8888">Login to spotify</a>
         </section>
     )
 }
