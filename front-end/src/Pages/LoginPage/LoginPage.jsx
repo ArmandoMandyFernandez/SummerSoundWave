@@ -1,6 +1,7 @@
 import "./LoginPage.scss";
 import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
+import Welcome from "../../Components/Welcome/Welcome";
 import axios from "axios";
 
 const spotifyApi = new SpotifyWebApi();
@@ -18,9 +19,8 @@ const getTokenFromUrl = () => {
 
 function LoginPage() {
     const [spotifyToken, setSpotifyToken] = useState("");
-    const [topTracks, setTopTracks] = useState({});
     const [loggedIn, setLoggedIn] = useState(false);
-    const [name, setName] = useState("");
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         console.log(`This is what we derived from the URL:`, getTokenFromUrl());
@@ -31,14 +31,17 @@ function LoginPage() {
         if (spotifyToken) {
             setSpotifyToken(spotifyToken);
             spotifyApi.setAccessToken(spotifyToken);
-            spotifyApi.getMe().then((user) => {
+            spotifyApi.getMe()
+            .then((user) => {
                 console.log(`using the getMe spotify call:`, user);
-                setName(name);
+                setUserName(user.display_name);
+                console.log(`this is the user data:`, user.display_name)
             });
             setLoggedIn(true);
         }
     });
 
+    
 
 
     return (
@@ -46,17 +49,7 @@ function LoginPage() {
             {!loggedIn && <a href="http://localhost:8888">Login to spotify</a>}
             {loggedIn && (
                 <>
-                    <h1>Welcome To Your Summer Rewind! </h1>
-                    <div>
-                        <h3>
-                            The Summer Rewind isn’t just another music playlist -
-                            it's a time capsule. It's the soundtrack to your
-                            summer adventures, the melodies that underscored
-                            your most cherished moments, and the rhythms that
-                            moved you. Dive in, and let the memories play.
-                        </h3>
-                        <button>Let's Get Started!</button>
-                    </div>
+                    <Welcome name={userName}/>
                 </>
             )}
         </section>
