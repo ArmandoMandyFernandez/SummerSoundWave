@@ -28,7 +28,7 @@ function LoginPage() {
     useEffect(() => {
         console.log(`This is what we derived from the URL:`, getTokenFromUrl());
         const spotifyToken = getTokenFromUrl().access_token;
-        window.location.hash = "";
+        // window.location.hash = "";
         console.log(`This is our spotify token`, spotifyToken);
 
         if (spotifyToken) {
@@ -40,12 +40,14 @@ function LoginPage() {
                 setUserName(user.display_name);
                 setId(user.id);
                 setHref(user.href);
-                // setImg(user.images[1])
+                setImg(user.images[0].url)
                 console.log(`this is the user data:`, user.display_name)
             });
             setLoggedIn(true);
         }
     },[]);
+
+    
 
     
 
