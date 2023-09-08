@@ -2,7 +2,7 @@ import "./LoginPage.scss";
 import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import Welcome from "../../Components/Welcome/Welcome";
-import axios from "axios";
+
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -21,6 +21,9 @@ function LoginPage() {
     const [spotifyToken, setSpotifyToken] = useState("");
     const [loggedIn, setLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
+    const [id, setId] = useState("")
+    const [href,setHref] = useState("")
+    const [img, setImg] = useState([])
 
     useEffect(() => {
         console.log(`This is what we derived from the URL:`, getTokenFromUrl());
@@ -35,11 +38,14 @@ function LoginPage() {
             .then((user) => {
                 console.log(`using the getMe spotify call:`, user);
                 setUserName(user.display_name);
+                setId(user.id);
+                setHref(user.href);
+                // setImg(user.images[1])
                 console.log(`this is the user data:`, user.display_name)
             });
             setLoggedIn(true);
         }
-    });
+    },[]);
 
     
 
@@ -49,7 +55,7 @@ function LoginPage() {
             {!loggedIn && <a href="http://localhost:8888">Login to spotify</a>}
             {loggedIn && (
                 <>
-                    <Welcome name={userName}/>
+                    <Welcome name={userName} id={id} href={href} images={img}/>
                 </>
             )}
         </section>

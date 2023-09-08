@@ -1,3 +1,4 @@
+import axios from 'axios';
 import './GetStartedButton.scss';
 import { useNavigate } from 'react-router-dom';
 
@@ -5,11 +6,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function GetStartedButton(){
+function GetStartedButton( {href} ){
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        navigate('/home');
+
+        axios
+        .get(`${href}/top/tracks?limit=20`).then((res)=>{
+            console.log(res.data)
+        })
+        // navigate('/home');
 
     }
 
