@@ -1,30 +1,21 @@
 import './GetStartedButton.scss';
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 function GetStartedButton(){
+    const navigate = useNavigate();
 
+    const handleButtonClick = () => {
+        navigate('/home');
 
-
-    
-        useEffect(() => {
-                axios
-                    .get(`https://api.spotify.com/v1/me/top/tracks?limit=30`)
-                    .then((response) => {
-                        console.log(response.data);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            }, []);
-
+    }
 
     return(
         <section>
-            <button className='button__getTracks'>Get Started</button>
+            <button className='button__getTracks' onClick={handleButtonClick}>Get Started</button>
         </section>
     )
 }
