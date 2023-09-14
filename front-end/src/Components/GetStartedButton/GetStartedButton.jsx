@@ -12,10 +12,13 @@ function GetStartedButton( {href} ){
     const handleButtonClick = () => {
 
         axios
-        .get(`${href}/top/tracks?limit=20`).then((res)=>{
+        .get(`${href}/top/tracks?limit=20`)
+        .then((res)=>{
             console.log(res.data)
+        }).catch(err => {
+            console.log(err)
+            err.sendStatus(400)
         })
-        // navigate('/home');
 
     }
 

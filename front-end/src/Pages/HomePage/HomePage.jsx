@@ -1,10 +1,13 @@
 import './HomePage.scss';
 import axios from 'axios';
 import { useEffect } from 'react';
+import useAuth from '../../Functions/useAuth';
 
 
 
-function HomePage(){
+function HomePage( { code } ){
+
+    const accessToken = useAuth(code)
 
     // useEffect(() => {
     //     axios
@@ -17,6 +20,7 @@ function HomePage(){
     return(
         <section>
             Hello from Home 
+            <div>{code}</div>
         
         </section>
     )

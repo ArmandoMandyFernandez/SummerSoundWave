@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import Welcome from "../../Components/Welcome/Welcome";
 
-
 const spotifyApi = new SpotifyWebApi();
 
 const getTokenFromUrl = () => {
@@ -21,9 +20,9 @@ function LoginPage() {
     const [spotifyToken, setSpotifyToken] = useState("");
     const [loggedIn, setLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
-    const [id, setId] = useState("")
-    const [href,setHref] = useState("")
-    const [img, setImg] = useState([])
+    const [id, setId] = useState("");
+    const [href, setHref] = useState("");
+    const [img, setImg] = useState([]);
 
     useEffect(() => {
         console.log(`This is what we derived from the URL:`, getTokenFromUrl());
@@ -34,30 +33,31 @@ function LoginPage() {
         if (spotifyToken) {
             setSpotifyToken(spotifyToken);
             spotifyApi.setAccessToken(spotifyToken);
-            spotifyApi.getMe()
-            .then((user) => {
+            spotifyApi.getMe().then((user) => {
                 console.log(`using the getMe spotify call:`, user);
                 setUserName(user.display_name);
                 setId(user.id);
                 setHref(user.href);
-                setImg(user.images[0].url)
-                console.log(`this is the user data:`, user.display_name)
+                setImg(user.images[0].url);
+                console.log(`this is the user data:`, user.display_name);
             });
             setLoggedIn(true);
         }
-    },[]);
+    }, []);
 
-    
-
-    
-
+    const AUTH_URL =
+        "https://accounts.spotify.com/authorize?client_id=1f7ca06ee05740d7a725f74de05dbccd&response_type=code&redirect_uri=http://localhost:8888&scope=%20user-read-private%20user-read-email%20user-top-read%20playlist-modify-private%20playlist-modify-public";
 
     return (
         <section>
-            {!loggedIn && <a href="http://localhost:8888">Login to spotify</a>}
+            {!loggedIn && (
+                <a className="login_button" href={AUTH_URL}>
+                    <button className="login_button">Login to Spotify</button>
+                </a>
+            )}
             {loggedIn && (
                 <>
-                    <Welcome name={userName} id={id} href={href} images={img}/>
+                    <Welcome name={userName} id={id} href={href} images={img} />
                 </>
             )}
         </section>

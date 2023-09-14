@@ -39,7 +39,7 @@ app.get("/login", function (req, res) {
 
     // your application requests authorization
     var scope =
-        "user-read-private user-read-email user-top-read";
+        "user-read-private user-read-email user-top-read playlist-modify-private playlistmodify-public";
     res.redirect(
         "https://accounts.spotify.com/authorize?" +
             querystring.stringify({
@@ -48,12 +48,15 @@ app.get("/login", function (req, res) {
                 scope: scope,
                 redirect_uri: redirect_uri,
                 state: state,
+            }).catch(err => {
+                console.log(err)
+                res.sendStatus(400)
             })
     );
 });
 
 app.get("/callback", function (req, res) {
-    // your application requests refresh and access tokens
+    // application requests refresh and access tokens
     // after checking the state parameter
 
     var code = req.query.code || null;
@@ -144,6 +147,9 @@ app.get("/refresh_token", function (req, res) {
             var access_token = body.access_token;
             res.send({
                 access_token: access_token,
+            }).catch(err => {
+                console.log(err)
+                res.sendStatus(400)
             });
         }
     });
