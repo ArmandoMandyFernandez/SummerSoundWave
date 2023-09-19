@@ -1,13 +1,13 @@
 import axios from 'axios';
 import './GetStartedButton.scss';
-import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 
 function GetStartedButton( {href} ){
-    const navigate = useNavigate();
+    
 
     const handleButtonClick = () => {
 
