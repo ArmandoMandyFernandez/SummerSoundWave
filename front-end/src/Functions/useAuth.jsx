@@ -8,15 +8,12 @@ export default function useAuth(code) {
 
     useEffect(() => {
         axios
-            .post("http://localhost:8888/login", {
-                code,
-            })
-            .then((res) => {
-                console.log("this is the login post", res.data)
-                setAccessToken(res.data.accessToken);
-                setRefreshToken(res.data.refreshToken);
-                setExpiresIn(res.data.expiresIn);
-                window.history.pushState({}, null, "/");
+            .post("http://localhost:8888/login", {code})
+            .then(res => {
+                setAccessToken(res.data.accessToken)
+                setRefreshToken(res.data.refreshToken)
+                setExpiresIn(res.data.expiresIn)
+                window.history.pushState({}, null, '/')
             })
             .catch(() => {
                 window.location = "/";
@@ -31,14 +28,13 @@ export default function useAuth(code) {
                     refreshToken,
                 })
                 .then((res) => {
-                    console.log("this is the refresh post", res.data)
                     setAccessToken(res.data.accessToken);
                     setExpiresIn(res.data.expiresIn);
                 })
                 .catch(() => {
                     window.location = "/";
                 });
-        }, (expiresIn - 60) * 3600000);
+        }, (expiresIn - 60) * 1000);
 
         return () => clearInterval(interval);
     }, [refreshToken, expiresIn]);
