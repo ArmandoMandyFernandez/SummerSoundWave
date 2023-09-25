@@ -5,19 +5,15 @@ import getUserInfo from "../../Functions/SpotifyFunctions"
 import SpotifyWebApi from "spotify-web-api-js";
 
 
-const spotifyApi = new SpotifyWebApi()
+const spotifyApi = new SpotifyWebApi();
 
 function HomePage({ code }) {
     const accessToken = useAuth(code);
-    const getUser = getUserInfo(accessToken)
+    const access_Token = accessToken
 
+    // Create an api call to get the user information
     useEffect(()=>{
-        spotifyApi.getMe(getUser)
-        .then((data) => {
-            console.log('Auth User is: ', data.body)
-        }).catch((err)=>{
-            console.log(err)
-        })
+        getUserInfo(access_Token)
     })
 
     return (
