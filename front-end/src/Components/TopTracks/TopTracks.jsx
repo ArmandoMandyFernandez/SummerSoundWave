@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Loader } from "rsuite";
 import "./TopTracks.scss";
 import axios from "axios";
-import MakePlaylistButton from "../GetStartedButton/MakePlaylistButton";
+import MakePlaylistButton from "../MakePlaylistButton/MakePlaylistButton";
 
-function TopTracks({ accessToken }) {
+function TopTracks({ accessToken, onPlaylistCreated }) {
     const [topTracks, setTopTracks] = useState([]);
     const [trackIds, setTrackIds] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,10 +51,14 @@ function TopTracks({ accessToken }) {
     console.log(topTracks)
     console.log(trackIds);
 
+    const handlePlaylistButtonClicked = () => {
+        onPlaylistCreated();
+    };
+
     return (
         <div>
             <h2> Here are your Top Tracks</h2>
-            <MakePlaylistButton trackIds={trackIds} accessToken={accessToken}/>
+            <MakePlaylistButton trackIds={trackIds} accessToken={accessToken} onClick={handlePlaylistButtonClicked}/>
             {loading ? (
                 <Loader size="lg" center />
             ) : (

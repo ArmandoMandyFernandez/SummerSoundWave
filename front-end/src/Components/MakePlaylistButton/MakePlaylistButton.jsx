@@ -1,6 +1,6 @@
 import './MakePlaylistButton.scss';
 
-function MakePlaylistButton({ trackIds, accessToken }) {  
+function MakePlaylistButton({ trackIds, accessToken, onClick }) {  
 
     const handleButtonClick = async () => {  
 
@@ -35,6 +35,7 @@ function MakePlaylistButton({ trackIds, accessToken }) {
 
         const createdPlaylist = await createPlaylist(tracksUri);  
         console.log(createdPlaylist.name, createdPlaylist.id);
+        onClick();
     }
 
     return (
