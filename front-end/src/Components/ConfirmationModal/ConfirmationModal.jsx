@@ -1,4 +1,4 @@
-// import "./ConfirmationModal.scss"; uncomment when created
+import "./ConfirmationModal.scss"; 
 
 function ConfirmationModal({ isOpen, onClose }) {
     if (!isOpen) {
