@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Loader } from "rsuite";
 import "./TopTracks.scss";
 import axios from "axios";
+import MakePlaylistButton from "../GetStartedButton/MakePlaylistButton";
 
 function TopTracks({ accessToken }) {
     const [topTracks, setTopTracks] = useState([]);
+    const [trackIds, setTrackIds] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function fetchWebApi(endpoint, method, accessToken) {
@@ -35,6 +37,8 @@ function TopTracks({ accessToken }) {
                     'v1/me/top/tracks?time_range=medium_term&limit=30', 'GET', accessToken
                 );
                 setTopTracks(tracksResponse.items);
+                const ids = tracksResponse.items.map(track => track.id);
+                setTrackIds(ids);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching top tracks:", error);
@@ -44,9 +48,13 @@ function TopTracks({ accessToken }) {
         getTopTracks();
     }, [accessToken]);
 
+    console.log(topTracks)
+    console.log(trackIds);
+
     return (
         <div>
-            <h2>Top Tracks</h2>
+            <h2> Here are your Top Tracks</h2>
+            <MakePlaylistButton trackIds={trackIds} accessToken={accessToken}/>
             {loading ? (
                 <Loader size="lg" center />
             ) : (
