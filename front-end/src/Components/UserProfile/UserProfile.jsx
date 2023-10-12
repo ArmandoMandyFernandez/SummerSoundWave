@@ -1,3 +1,4 @@
+import "./UserProfile.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader } from "rsuite";
@@ -44,15 +45,15 @@ function UserProfile({ accessToken }) {
     
 
     return (
-        <div>
+        <div className="userProfile">
             {loading ? (
                 <Loader />
             ) : (
-                <div>
+                <div className="userProfile_container">
                     {user.images && user.images.length > 0 && (
                         <img src={user.images[0].url} alt="" />
                     )}
-                    <h1>Hello {user.display_name}</h1>
+                    <h1>Hi {user.display_name}!</h1>
                 </div>
             )}
         </div>

@@ -1,5 +1,21 @@
 .topTracks{
 
+    &_container{
+        background-color: rgb(75, 75, 75);
+        margin: 1rem 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+
+        &-header{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+        }
+    }
+
     &_list-item{
         display: flex;
         flex-direction: row;

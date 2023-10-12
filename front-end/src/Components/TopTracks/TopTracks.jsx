@@ -34,10 +34,12 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
         async function getTopTracks() {
             try {
                 const tracksResponse = await fetchWebApi(
-                    'v1/me/top/tracks?time_range=medium_term&limit=30', 'GET', accessToken
+                    "v1/me/top/tracks?time_range=medium_term&limit=30",
+                    "GET",
+                    accessToken
                 );
                 setTopTracks(tracksResponse.items);
-                const ids = tracksResponse.items.map(track => track.id);
+                const ids = tracksResponse.items.map((track) => track.id);
                 setTrackIds(ids);
                 setLoading(false);
             } catch (error) {
@@ -48,7 +50,7 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
         getTopTracks();
     }, [accessToken]);
 
-    console.log(topTracks)
+    console.log(topTracks);
     console.log(trackIds);
 
     const handlePlaylistButtonClicked = () => {
@@ -56,29 +58,39 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
     };
 
     return (
-        <div>
-            <h2> Here are your Top Tracks</h2>
-            <MakePlaylistButton trackIds={trackIds} accessToken={accessToken} onClick={handlePlaylistButtonClicked}/>
+        <div className="topTracks">
+            <div className="topTracks_container-header">
+                <h2 className="topTracks_header"> Here are your Top Tracks</h2>
+                <MakePlaylistButton
+                    trackIds={trackIds}
+                    accessToken={accessToken}
+                    onClick={handlePlaylistButtonClicked}
+                />
+            </div>
             {loading ? (
                 <Loader size="lg" center />
             ) : (
                 topTracks.map((track, index) => (
-                    <li className="topTracks_list-item" key={track.id}>
-                        <h3>{index + 1}.</h3>
-                        <div>
-                            <img
-                                src={track.album.images[2].url}
-                                alt="Album Cover"
-                            />
-                        </div>
-                        <div>
-                            <p>{track.name}</p>
-                            <p>By: {track.artists
-                                .map((artist) => artist.name)
-                                .join(", ")}
-                            </p>
-                        </div>
-                    </li>
+                    <div className="topTracks_container">
+                        <li className="topTracks_list-item" key={track.id}>
+                            <h3>{index + 1}.</h3>
+                            <div>
+                                <img
+                                    src={track.album.images[2].url}
+                                    alt="Album Cover"
+                                />
+                            </div>
+                            <div>
+                                <p>{track.name}</p>
+                                <p>
+                                    By:{" "}
+                                    {track.artists
+                                        .map((artist) => artist.name)
+                                        .join(", ")}
+                                </p>
+                            </div>
+                        </li>
+                    </div>
                 ))
             )}
         </div>

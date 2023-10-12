@@ -1,4 +1,11 @@
-.button__make-playlist{
+.playlistButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    &_button{
     width: 8rem;
     height: 2rem;
     background-color: #06f040;
@@ -10,4 +17,5 @@
     &:hover{
         background-color: #01b82e;
     }
+}
 }
