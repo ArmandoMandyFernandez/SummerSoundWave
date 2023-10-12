@@ -1,0 +1,24 @@
+.login{
+    &_button {
+        background-color: rgb(5, 240, 37);
+        height: 2rem;
+        color: white;
+        border: none !important;
+        font-size: .8rem;
+        font-weight: 800;
+        border-radius: 50px;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+
+        &-link{
+            margin: 1rem auto;
+            display: flex;
+            justify-content: center;
+        }
+
+}
+}

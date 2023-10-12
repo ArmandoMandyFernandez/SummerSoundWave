@@ -1,4 +1,5 @@
 import "./Welcome.scss";
+import SoundWave from "../../Assets/SummerSoundWave.png"
 
 
 function Welcome( ) {
@@ -6,8 +7,10 @@ function Welcome( ) {
 
     return (
         <section className="welcome">
-                <h1>Step Back into the sunshine with SummerSoundWave </h1>
-                <p>Hey, I'm Mandy, a software engineer with a passion for music and memories! Welcome to SummerSoundWave, where your unforgettable summer moments are turned into a personalised playlist. I created this fun project to ensure the vibes and rhythms of summer ‘23 forever echo in our hearts. Dive in, discover the tunes that painted your summer days, and share your top 5 songs snapshot and entire playlist with friends to spread the sunshine! Every note is a journey back to the golden hours. Happy listening!</p>
+                
+                <h1 className="welcome_header">Step Back into the sunshine with SummerSoundWave </h1>
+                <img src={SoundWave} alt="girl listening to music" className="welcome_image" />
+                <p className="welcome_description">Welcome to SummerSoundWave - your personalized musical escape to the radiant vibes of Summer '23. Uncover a playlist crafted to echo the unforgettable rhythms and melodies that defined your sun-soaked moments. Each tune is a journey, inviting you to relive the warmth and nostalgia with every note. Share your top 5 favorites and the entire playlist with friends, letting the harmonies spread the sunshine of memorable days. Dive in, let the music dance, and bask in the golden echoes of summer with every listen.</p>
         </section>
     );
 }
