@@ -1,10 +1,14 @@
 .userProfile{
     
-
     &_container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    &_image{
+        height: 5rem;
+        border-radius: 100px;
+        margin-bottom: 1rem;
     }
 }

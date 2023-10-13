@@ -42,6 +42,7 @@ function UserProfile({ accessToken }) {
     
         getMe();
     }, [accessToken]);
+    console.log(user)
     
 
     return (
@@ -51,7 +52,7 @@ function UserProfile({ accessToken }) {
             ) : (
                 <div className="userProfile_container">
                     {user.images && user.images.length > 0 && (
-                        <img src={user.images[0].url} alt="" />
+                        <img src={user.images[1].url} alt="profile icon of user" className="userProfile_image" />
                     )}
                     <h1>Hi {user.display_name}!</h1>
                 </div>

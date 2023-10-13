@@ -14,10 +14,50 @@
             align-items: center;
             margin: 1rem auto;
         }
+
+        &-image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 .5rem;
+        }
+
+        &-number{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10%;
+        }
+
+        &-info{
+            width: 70%;
+        }
     }
 
-    &_list-item{
+    &_list{
+
+    &-item{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        
+    }
+
+    &-number{
+        font-size: 1.8rem;
+        margin-right: .5rem;
+    }
+
+    &-name{
+        font-size: .9rem;
+        font-weight: 800;
+        margin: 0 0 1rem .8rem;
+    }
+
+    &-artist{
+        font-size: .8rem;
+        margin: 0 0 0 .8rem
+    }
+
     }
 }

@@ -4,9 +4,10 @@ import "./TopTracks.scss";
 import axios from "axios";
 import MakePlaylistButton from "../MakePlaylistButton/MakePlaylistButton";
 
-function TopTracks({ accessToken, onPlaylistCreated }) {
+function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
     const [topTracks, setTopTracks] = useState([]);
     const [trackIds, setTrackIds] = useState([]);
+    const [topFive, setTopFive] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function fetchWebApi(endpoint, method, accessToken) {
@@ -39,6 +40,10 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
                     accessToken
                 );
                 setTopTracks(tracksResponse.items);
+                setTopFive(tracksResponse.items.slice(0,5));
+                if (onTop5TracksFetched){
+                    onTop5TracksFetched(tracksResponse.items.slice(0,5));
+                }
                 const ids = tracksResponse.items.map((track) => track.id);
                 setTrackIds(ids);
                 setLoading(false);
@@ -48,10 +53,11 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
         }
 
         getTopTracks();
-    }, [accessToken]);
+    }, [accessToken, onTop5TracksFetched]);
 
-    console.log(topTracks);
-    console.log(trackIds);
+    // eslint-disable-next-line no-use-before-define
+    console.log(topTracks);console.log(trackIds);console.log(topFive);
+    
 
     const handlePlaylistButtonClicked = () => {
         onPlaylistCreated();
@@ -60,7 +66,7 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
     return (
         <div className="topTracks">
             <div className="topTracks_container-header">
-                <h2 className="topTracks_header"> Here are your Top Tracks</h2>
+                <h2 className="topTracks_header"> Here are your Top Tracks:</h2>
                 <MakePlaylistButton
                     trackIds={trackIds}
                     accessToken={accessToken}
@@ -71,25 +77,28 @@ function TopTracks({ accessToken, onPlaylistCreated }) {
                 <Loader size="lg" center />
             ) : (
                 topTracks.map((track, index) => (
-                    <div className="topTracks_container">
-                        <li className="topTracks_list-item" key={track.id}>
-                            <h3>{index + 1}.</h3>
-                            <div>
+                    <div className="topTracks_container" key={track.id}>
+                            <div className="topTracks_container-number">
+                                <h3 className="topTracks_list-number">
+                                    {index + 1}.
+                                </h3>
+                            </div>
+                            <div className="topTracks_container-image">
                                 <img
                                     src={track.album.images[2].url}
                                     alt="Album Cover"
                                 />
                             </div>
-                            <div>
-                                <p>{track.name}</p>
-                                <p>
-                                    By:{" "}
+                            <div className="topTracks_container-info">
+                                <p className="topTracks_list-name">
+                                    {track.name}
+                                </p>
+                                <p className="topTracks_list-artist">
                                     {track.artists
                                         .map((artist) => artist.name)
                                         .join(", ")}
                                 </p>
                             </div>
-                        </li>
                     </div>
                 ))
             )}
