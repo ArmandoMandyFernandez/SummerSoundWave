@@ -1,10 +1,35 @@
 import "./ConfirmationModal.scss";
 import girl from "../../Assets/SummerSoundWave.png"
+import { useRef } from "react";
+import html2canvas from 'html2canvas'
 
 function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
+    const printRef = useRef();
+
     if (!isOpen) {
         return null;
     }
+
+    const handleDownloadImage = async () => {
+        const element = printRef.current;
+        const canvas = await html2canvas(element);
+    
+        const data = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+    
+        if (typeof link.download === 'string') {
+            link.href = data;
+            link.download = 'image.png';
+    
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            window.open(data);
+        }
+        };
+
+
 
     return (
         <div className="modal">
@@ -25,8 +50,8 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                         friends!
                     </p>
                 </div>
-
-                <div className="topFive_card">
+                {/* You want to pirnt this card */}
+                <div className="topFive_card" ref={printRef}>
 
                 <div className="topFive_image-container">
                     <img src={girl} alt="soundwave icon of girl"  className="topFive_image"/>
@@ -66,6 +91,8 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                     </div>
                 )}
                 </div>
+                <button type="button" onClick={handleDownloadImage}>Download as Image</button>
+                {/* You want to pring this card */}
             </div>
         </div>
     );
