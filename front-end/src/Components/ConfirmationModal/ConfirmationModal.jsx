@@ -35,7 +35,8 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                 {top5Tracks && top5Tracks.length > 0 && (
                     <div className="topFive_outer-container">
                         <div className="topFive_header-container">
-                            <h3>My Top 5 SummerSoundWave</h3>
+                            <h3 className="topFive_header-heading">My Top 5</h3>
+                            <h3 className="topFive_header-heading">SummerSoundWave</h3>
                         </div>
                         {top5Tracks.map((track, index) => (
                             <div className="topFive_container" key={track.id}>
