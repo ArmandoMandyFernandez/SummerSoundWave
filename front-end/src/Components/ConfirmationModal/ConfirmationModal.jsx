@@ -1,5 +1,5 @@
 import "./ConfirmationModal.scss";
-// import girl from "../../Assets/theSixMix.png";
+import girl from "../../Assets/theSixMix.png";
 import { useRef } from "react";
 import domtoimage from 'dom-to-image';
 
@@ -50,7 +50,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                 <div className="topFive_card" ref={printRef}>
                     <div className="topFive_image-container">
                         <img
-                            src="https://www.dropbox.com/scl/fi/j32kpc80cu8y5387jy3bw/theSixMix.jpeg?rlkey=3efdslxe0hqay4pk3yibnhfgi&raw=1"
+                            src={girl}
                             alt="soundwave icon of girl"
                             className="topFive_image"
                         />
