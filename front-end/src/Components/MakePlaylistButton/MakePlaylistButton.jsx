@@ -30,14 +30,6 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
             await fetchWebApi(
                 `v1/playlists/${playlist.id}/tracks`, 'POST', { uris: tracksUri });  
 
-                await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/images`, {
-                    method: 'PUT',
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'image/jpeg', 
-                    },
-                    body: `https://www.dropbox.com/scl/fi/j32kpc80cu8y5387jy3bw/theSixMix.jpeg?rlkey=3efdslxe0hqay4pk3yibnhfgi&raw=1`, 
-                });
         }
 
         const createdPlaylist = await createPlaylist(tracksUri);  
