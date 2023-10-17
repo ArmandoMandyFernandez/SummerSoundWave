@@ -1,5 +1,5 @@
 import "./ConfirmationModal.scss";
-import girl from "../../Assets/theSixMix.png";
+// import girl from "../../Assets/theSixMix.png";
 import { useRef } from "react";
 import domtoimage from 'dom-to-image';
 
