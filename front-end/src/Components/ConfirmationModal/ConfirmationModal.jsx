@@ -39,7 +39,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                     </h2>
                     <div className="modal_header-description-container">
                         <p className="modal_header-description">
-                            Enjoy your new playlist!
+                            Now go ahead and head to Spotify to check out your new playlist!
                         </p>
                         <p className="modal_header-description">
                             Share the top 5 songs of your
