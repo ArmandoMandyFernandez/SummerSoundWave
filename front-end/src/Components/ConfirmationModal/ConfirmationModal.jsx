@@ -42,10 +42,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                             Now go ahead and head to Spotify to check out your new playlist!
                         </p>
                         <p className="modal_header-description">
-                            Share the top 5 songs of your
-                        </p>
-                        <p className="modal_header-description">
-                            6Mix with your friends!
+                            Share the top 5 songs of your 6Mix with your friends!
                         </p>
                     </div>
                 </div>
