@@ -12,10 +12,10 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
     const handleDownloadImage = async () => {
         const element = printRef.current;
     
-    domtoimage.toPng(element)
+        domtoimage.toJpeg(element)
         .then(dataUrl => {
             const link = document.createElement('a');
-            link.download = 'the-6Mix.png';
+            link.download = 'the-6Mix.jpeg';
             link.href = dataUrl;
             link.click();
         })
