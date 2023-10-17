@@ -1,7 +1,7 @@
 import "./ConfirmationModal.scss";
 import girl from "../../Assets/theSixMix.png";
 import { useRef } from "react";
-import domtoimage from 'dom-to-image';
+import domtoimage from "dom-to-image";
 
 function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
     const printRef = useRef();
@@ -11,17 +11,18 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
 
     const handleDownloadImage = async () => {
         const element = printRef.current;
-    
-        domtoimage.toJpeg(element)
-        .then(dataUrl => {
-            const link = document.createElement('a');
-            link.download = 'the-6Mix.jpeg';
-            link.href = dataUrl;
-            link.click();
-        })
-        .catch(error => {
-            console.error('Error while creating image', error);
-        });
+
+        domtoimage
+            .toJpeg(element)
+            .then((dataUrl) => {
+                const link = document.createElement("a");
+                link.download = "the-6Mix.jpeg";
+                link.href = dataUrl;
+                link.click();
+            })
+            .catch((error) => {
+                console.error("Error while creating image", error);
+            });
     };
 
     return (
@@ -39,10 +40,12 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                     </h2>
                     <div className="modal_header-description-container">
                         <p className="modal_header-description">
-                            Now go ahead and head to Spotify to check out your new playlist!
+                            Now go ahead and head to Spotify to check out your
+                            new playlist!
                         </p>
                         <p className="modal_header-description">
-                            Share the top 5 songs of your 6Mix with your friends!
+                            Share the top 5 songs of your 6Mix with your
+                            friends!
                         </p>
                     </div>
                 </div>
@@ -97,7 +100,9 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                         </div>
                     )}
                     <div className="topFive_closing-caption-container">
-                    <p className="topFive_closing-caption">Made by @Man_dee</p>
+                        <p className="topFive_closing-caption">
+                            Made by @Man_dee
+                        </p>
                     </div>
                 </div>
                 <div className="topFive_button-container">
