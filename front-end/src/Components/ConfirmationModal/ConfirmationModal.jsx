@@ -53,7 +53,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                 <div className="topFive_card" ref={printRef}>
                     <div className="topFive_image-container">
                         <img
-                            src={girl}
+                            src="https://www.dropbox.com/scl/fi/j32kpc80cu8y5387jy3bw/theSixMix.jpeg?rlkey=3efdslxe0hqay4pk3yibnhfgi&raw=1"
                             alt="soundwave icon of girl"
                             className="topFive_image"
                         />
