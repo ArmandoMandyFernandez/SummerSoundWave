@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// logiin post
+// login post
 app.post("/login", (req, res) => {
 
     const credentials = {
