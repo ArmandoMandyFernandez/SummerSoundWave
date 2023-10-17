@@ -22,8 +22,8 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
 
             const playlist = await fetchWebApi(
                 `v1/users/${userId}/playlists`, 'POST', {
-                    "name": "The SixMix",
-                    "description": "Playlist created by @Man_dee",
+                    "name": "The 6Mix",
+                    "description": "Playlist created by Mandy",
                     "public": false
                 });
 
