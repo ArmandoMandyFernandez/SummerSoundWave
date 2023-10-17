@@ -37,7 +37,7 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
                         Authorization: `Bearer ${accessToken}`,
                         'Content-Type': 'image/jpeg', 
                     },
-                    body: {image}, 
+                    body: `https://www.dropbox.com/scl/fi/huun123dhqus8qswdwvn7/theSixMix.png?rlkey=mo2wexmrkdollawzij3bq7ty5&raw=1`, 
                 });
         }
 
