@@ -22,8 +22,8 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
 
             const playlist = await fetchWebApi(
                 `v1/users/${userId}/playlists`, 'POST', {
-                    "name": "My 2023 SummerSoundWave",
-                    "description": "Playlist created by Mandy",
+                    "name": "The SixMix",
+                    "description": "Playlist created by @Man_dee",
                     "public": false
                 });
 
@@ -34,8 +34,7 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
         }
 
         const createdPlaylist = await createPlaylist(tracksUri);  
-        console.log(createdPlaylist.name, createdPlaylist.id);
-        onClick();
+        onClick(createdPlaylist);
     }
 
     return (

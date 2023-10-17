@@ -6,7 +6,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: .5rem;
 
     &_content {
@@ -33,15 +33,38 @@
         text-decoration: none;
         cursor: pointer;
     }
+
+    &_header{
+        margin: 2rem 0rem 1rem 0rem;
+        
+
+        &-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        &-description-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
 }
 
 
 .topFive{
 
     &_card{
-        background-color: rgb(21, 21, 21);
+        background-color: rgb(40, 40, 40);
+        background-image: url(../../Assets/the-6mix-logo.png);
+        background-repeat: repeat;
+        background-size: 4rem;
         margin: 1rem 0;
         padding: 1rem;
+        border-radius: 4px;
     }
 
     &_image{
@@ -57,7 +80,7 @@
 
 
     &_outer-container{
-        background-color: rgb(42, 42, 42);
+        background-color: rgb(52, 51, 51);
         padding: 1rem;
         margin: 1rem 0;
         border-radius: 4px;
@@ -75,6 +98,7 @@
         &-heading{
             font-weight: 800;
         }
+
     }
     
     
@@ -139,5 +163,42 @@
         margin: 0 0 0 .8rem
     }
 
+    }
+
+    &_button{
+        background-color: rgb(5, 240, 37);
+        height: 2rem;
+        color: white;
+        border: none !important;
+        font-size: .8rem;
+        font-weight: 800;
+        border-radius: 50px;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+        margin-bottom: 2rem;
+        &:hover{
+            background-color: #01b82e;
+        }
+
+        &-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &_closing-caption{
+        font-size: 8px;
+
+        &-container{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
     }
 }

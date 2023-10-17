@@ -1,5 +1,5 @@
 import useAuth from "../../Functions/useAuth";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import TopTracks from "../../Components/TopTracks/TopTracks";
 import UserProfile from "../../Components/UserProfile/UserProfile"; 
 import ConfirmationModal from "../../Components/ConfirmationModal/ConfirmationModal";
@@ -16,9 +16,9 @@ function HomePage({ code }) {
         setIsModalOpen(true);  
     };
 
-    const handleTop5TracksFetched = (tracks) => {   
+    const handleTop5TracksFetched = useCallback((tracks) => {   
         setTop5Tracks(tracks);
-    };
+    },[]);
 
 
     const handleCloseModal = () => {

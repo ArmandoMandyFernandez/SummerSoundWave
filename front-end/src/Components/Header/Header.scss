@@ -1,0 +1,10 @@
+.header{
+    background-color: rgb(0, 0, 0);
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_image{
+        height: 5rem;
+    }
+}

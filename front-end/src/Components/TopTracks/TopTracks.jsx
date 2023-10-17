@@ -32,6 +32,10 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
     }
 
     useEffect(() => {
+        if (!accessToken){
+            return;
+        }  
+
         async function getTopTracks() {
             try {
                 const tracksResponse = await fetchWebApi(
@@ -41,6 +45,7 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
                 );
                 setTopTracks(tracksResponse.items);
                 setTopFive(tracksResponse.items.slice(0,5));
+                console.log('Top Five Tracks:', tracksResponse.items.slice(0,5));
                 if (onTop5TracksFetched){
                     onTop5TracksFetched(tracksResponse.items.slice(0,5));
                 }
@@ -54,14 +59,14 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
 
         getTopTracks();
     }, [accessToken, onTop5TracksFetched]);
-
-    // eslint-disable-next-line no-use-before-define
-    console.log(topTracks);console.log(trackIds);console.log(topFive);
     
 
     const handlePlaylistButtonClicked = () => {
         onPlaylistCreated();
     };
+
+    // eslint-disable-next-line
+    console.log(topFive)
 
     return (
         <div className="topTracks">
