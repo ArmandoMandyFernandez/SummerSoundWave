@@ -1,4 +1,5 @@
 import './MakePlaylistButton.scss';
+import image from "../../Assets/theSixMix.png"
 
 function MakePlaylistButton({ trackIds, accessToken, onClick }) {  
 
@@ -30,7 +31,14 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
             await fetchWebApi(
                 `v1/playlists/${playlist.id}/tracks`, 'POST', { uris: tracksUri });  
 
-            return playlist;
+                await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/images`, {
+                    method: 'PUT',
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'image/jpeg', 
+                    },
+                    body: {image}, 
+                });
         }
 
         const createdPlaylist = await createPlaylist(tracksUri);  
