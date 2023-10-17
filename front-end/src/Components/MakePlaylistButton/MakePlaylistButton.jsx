@@ -1,5 +1,4 @@
 import './MakePlaylistButton.scss';
-import image from "../../Assets/theSixMix.png"
 
 function MakePlaylistButton({ trackIds, accessToken, onClick }) {  
 
