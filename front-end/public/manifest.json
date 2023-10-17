@@ -1,5 +1,5 @@
 {
-  "short_name": "SummerSoundWave",
+  "short_name": "The 6Mix",
   "name": "A SpotifyAPI Project",
   "icons": [
     {
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "SummerSoundWave.png",
+      "src": "theSixMix.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "SummerSoundWave.png",
+      "src": "theSixMix.png",
       "type": "image/png",
       "sizes": "512x512"
     }
