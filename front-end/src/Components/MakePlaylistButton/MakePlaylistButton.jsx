@@ -38,7 +38,7 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
 
     return (
         <section className='playlistButton'>
-            <h3 className='playlistButton_header'>Let's make them a Playlist</h3>
+            <h3 className='playlistButton_header'>Let's make them a playlist</h3>
             <button className='playlistButton_button' onClick={handleButtonClick}>Make My Playlist</button>
         </section>
     )
