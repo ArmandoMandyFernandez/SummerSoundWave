@@ -1,7 +1,7 @@
 import "./ConfirmationModal.scss";
 import girl from "../../Assets/theSixMix.png";
 import { useRef } from "react";
-import domtoimage from "dom-to-image";
+import domtoimage from "dom-to-image-more";
 
 function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
     const printRef = useRef();
