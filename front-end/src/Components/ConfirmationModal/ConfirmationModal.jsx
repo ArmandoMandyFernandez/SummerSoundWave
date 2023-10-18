@@ -10,7 +10,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
     }
 
     const handleDownloadImage = async () => {
-        const element = printRef.current;
+        const element = document.getElementById("card");
 
         domtoimage
             .toJpeg(element)
@@ -50,7 +50,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
                     </div>
                 </div>
                 {/* You want to pirnt this card */}
-                <div className="topFive_card" ref={printRef}>
+                <div className="topFive_card" ref={printRef} id="card">
                     <div className="topFive_image-container">
                         <img
                             src={girl}
