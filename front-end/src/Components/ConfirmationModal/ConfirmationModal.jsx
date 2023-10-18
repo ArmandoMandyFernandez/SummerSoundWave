@@ -10,7 +10,7 @@ function ConfirmationModal({ isOpen, onClose, top5Tracks }) {
     }
 
     const handleDownloadImage = async () => {
-        const element = document.getElementById("card");
+        const element = printRef.current;
 
         domtoimage
             .toJpeg(element)
