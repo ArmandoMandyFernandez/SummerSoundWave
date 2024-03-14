@@ -45,7 +45,7 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
                 );
                 setTopTracks(tracksResponse.items);
                 setTopFive(tracksResponse.items.slice(0,5));
-                console.log('Top Five Tracks:', tracksResponse.items.slice(0,5));
+                // console.log('Top Five Tracks:', tracksResponse.items.slice(0,5));
                 if (onTop5TracksFetched){
                     onTop5TracksFetched(tracksResponse.items.slice(0,5));
                 }
@@ -66,7 +66,7 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
     };
 
     // eslint-disable-next-line
-    console.log(topFive)
+    // console.log(topFive)
 
     return (
         <div className="topTracks">

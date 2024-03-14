@@ -19,7 +19,7 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
 
         async function createPlaylist(tracksUri) {
             const { id: userId } = await fetchWebApi('v1/me', 'GET');
-
+                console.log(userId)
             const playlist = await fetchWebApi(
                 `v1/users/${userId}/playlists`, 'POST', {
                     "name": "The 6Mix",
@@ -34,6 +34,7 @@ function MakePlaylistButton({ trackIds, accessToken, onClick }) {
 
         const createdPlaylist = await createPlaylist(tracksUri);  
         onClick(createdPlaylist);
+        
     }
 
     return (
