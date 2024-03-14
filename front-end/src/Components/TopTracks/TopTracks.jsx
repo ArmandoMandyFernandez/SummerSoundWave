@@ -66,7 +66,7 @@ function TopTracks({ accessToken, onPlaylistCreated, onTop5TracksFetched }) {
     };
 
     // eslint-disable-next-line
-    // console.log(topFive)
+    console.log(topFive)
 
     return (
         <div className="topTracks">
